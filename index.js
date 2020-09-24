@@ -6,7 +6,7 @@ var box = document.getElementById('box');
 var loopNvidia;
 
 testButtonNvidia.onclick = () => {
-	isAvailable(true);
+	isAvailableNvidia(true);
 };
 
 startButtonNvidia.onclick = () => {
