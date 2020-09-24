@@ -30,13 +30,12 @@ var getJSON = function (url, callback) {
 function isAvailable() {
 	getJSON('https://api-prod.nvidia.com/direct-sales-shop/DR/products/en_us/USD/5438481700', function (err, data) {
 		try {
-			if (data.products.product[0].inventoryStatus.status == 'PRODUCT_INVENTORY_OUT_OF_STOCK') {
+			if (data.products.product[0].inventoryStatus.status !== 'PRODUCT_INVENTORY_OUT_OF_STOCK') {
 				clearInterval(loop);
 				var path = './alarm_beep.wav';
 				var snd = new Audio(path);
 				snd.play();
-				console.log('PLAY');
-				// window.open('https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080/', '_blank');
+				window.open('https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080/', '_blank');
 			}
 		} catch (error) {
 			console.log('Error');
