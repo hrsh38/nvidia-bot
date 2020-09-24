@@ -1,0 +1,15 @@
+.color-box-red {
+	width: 100px;
+	height: 100px;
+	padding: 50px;
+	margin: 20px;
+	background-color: red;
+}
+
+.color-box-green {
+	width: 100px;
+	height: 100px;
+	padding: 50px;
+	margin: 20px;
+	background-color: green;
+}
