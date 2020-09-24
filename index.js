@@ -1,24 +1,24 @@
-var startButton = document.getElementById('startButton');
-var stopButton = document.getElementById('stopButton');
-var testButton = document.getElementById('testButton');
+var startButtonNvidia = document.getElementById('startButtonNvidia1');
+var stopButtonNvidia = document.getElementById('stopButtonNvidia1');
+var testButtonNvidia = document.getElementById('testButtonNvidia1');
 var box = document.getElementById('box');
 
-var loop;
+var loopNvidia;
 
-testButton.onclick = () => {
+testButtonNvidia.onclick = () => {
 	isAvailable(true);
 };
 
-startButton.onclick = () => {
-	startButton.disabled = 'disabled';
-	document.getElementById('text').innerHTML = 'Started';
-	loop = setInterval(isAvailable, 5000);
+startButtonNvidia.onclick = () => {
+	startButtonNvidia.disabled = 'disabled';
+	document.getElementById('text1').innerHTML = 'Started';
+	loopNvidia = setInterval(isAvailableNvidia, 5000);
 };
 
-stopButton.onclick = () => {
-	startButton.removeAttribute('disabled');
-	document.getElementById('text').innerHTML = 'Stopped';
-	clearInterval(loop);
+stopButtonNvidia.onclick = () => {
+	startButtonNvidia.removeAttribute('disabled');
+	document.getElementById('text1').innerHTML = 'Stopped';
+	clearInterval(loopNvidia);
 };
 
 var getJSON = function (url, callback) {
@@ -36,13 +36,13 @@ var getJSON = function (url, callback) {
 	xhr.send();
 };
 
-function isAvailable(success) {
+function isAvailableNvidia(success) {
 	getJSON('https://api-prod.nvidia.com/direct-sales-shop/DR/products/en_us/USD/5438481700', function (err, data) {
 		try {
 			if (data.products.product[0].inventoryStatus.status !== 'PRODUCT_INVENTORY_OUT_OF_STOCK' || success) {
 				box.className = 'color-box-green';
 				box.innerHTML = 'Found one';
-				clearInterval(loop);
+				clearInterval(loopNvidia);
 				var path = './alarm_beep.wav';
 				var snd = new Audio(path);
 				snd.play();
