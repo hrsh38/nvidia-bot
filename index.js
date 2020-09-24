@@ -12,7 +12,7 @@ testButton.onclick = () => {
 startButton.onclick = () => {
 	startButton.disabled = 'disabled';
 	document.getElementById('text').innerHTML = 'Started';
-	loop = setInterval(isAvailable, 2000);
+	loop = setInterval(isAvailable, 5000);
 };
 
 stopButton.onclick = () => {
@@ -53,6 +53,7 @@ function isAvailable(success) {
 				console.log('Nothing so far');
 			}
 		} catch (error) {
+			box.innerHTML = 'Error, refresh';
 			console.log('Error');
 			console.log(err);
 		}
