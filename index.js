@@ -1,8 +1,13 @@
 var startButton = document.getElementById('startButton');
 var stopButton = document.getElementById('stopButton');
+var testButton = document.getElementById('testButton');
 var box = document.getElementById('box');
 
 var loop;
+
+testButton.onclick = () => {
+	isAvailable(true);
+};
 
 startButton.onclick = () => {
 	startButton.disabled = 'disabled';
@@ -31,10 +36,10 @@ var getJSON = function (url, callback) {
 	xhr.send();
 };
 
-function isAvailable() {
+function isAvailable(success) {
 	getJSON('https://api-prod.nvidia.com/direct-sales-shop/DR/products/en_us/USD/5438481700', function (err, data) {
 		try {
-			if (data.products.product[0].inventoryStatus.status !== 'PRODUCT_INVENTORY_OUT_OF_STOCK') {
+			if (data.products.product[0].inventoryStatus.status !== 'PRODUCT_INVENTORY_OUT_OF_STOCK' || success) {
 				box.className = 'color-box-green';
 				box.innerHTML = 'Found one';
 				clearInterval(loop);
